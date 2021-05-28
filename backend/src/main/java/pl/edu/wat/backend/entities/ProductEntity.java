@@ -2,10 +2,7 @@ package pl.edu.wat.backend.entities;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -16,4 +13,7 @@ public class ProductEntity {
     private String name;
     private String description;
     private double price;
+
+    @ManyToOne
+    private OrderEntity order;
 }

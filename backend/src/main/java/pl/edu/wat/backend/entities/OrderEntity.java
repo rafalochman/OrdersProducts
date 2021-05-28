@@ -1,11 +1,10 @@
 package pl.edu.wat.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 import java.util.Date;
 
 @Entity
@@ -16,5 +15,10 @@ public class OrderEntity {
     private int id;
     private String customerName;
     private String storeName;
+
+    @JsonFormat(pattern = "dd.MM.yyyy")
     private Date orderDate;
+
+    @OneToMany(mappedBy = "order")
+    private List<ProductEntity> products;
 }

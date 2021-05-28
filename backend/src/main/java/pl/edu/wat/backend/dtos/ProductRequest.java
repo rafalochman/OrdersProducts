@@ -1,2 +1,18 @@
-package pl.edu.wat.backend.dtos;public class ProductRequest {
+package pl.edu.wat.backend.dtos;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class ProductRequest {
+    private int id;
+    private String name;
+    private String description;
+    private double price;
+    private int orderId;
 }
