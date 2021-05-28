@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.edu.wat.backend.dtos.OrderRequest;
 import pl.edu.wat.backend.dtos.OrderResponse;
+import pl.edu.wat.backend.dtos.ProductResponse;
 import pl.edu.wat.backend.entities.OrderEntity;
 import pl.edu.wat.backend.repositories.OrderRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -29,7 +31,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void addOrder(OrderRequest orderRequest) {
+    public void saveOrder(OrderRequest orderRequest) {
         OrderEntity orderEntity = new OrderEntity();
         orderEntity.setId(orderRequest.getId());
         orderEntity.setCustomerName(orderRequest.getCustomerName());
@@ -37,5 +39,13 @@ public class OrderServiceImpl implements OrderService {
         orderEntity.setOrderDate(orderRequest.getOrderDate());
 
         orderRepository.save(orderEntity);
+    }
+
+    public void deleteOrderById(int id) {
+        orderRepository.deleteById(id);
+    }
+
+    public Optional<OrderResponse> getOrderById(int id){
+        return orderRepository.findById(id).map(entity -> new OrderResponse(entity.getId(), entity.getCustomerName(), entity.getStoreName(), entity.getOrderDate()));
     }
 }

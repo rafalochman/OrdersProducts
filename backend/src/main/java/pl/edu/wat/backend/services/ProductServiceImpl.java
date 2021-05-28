@@ -9,6 +9,7 @@ import pl.edu.wat.backend.entities.ProductEntity;
 import pl.edu.wat.backend.repositories.ProductRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -30,7 +31,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void addProduct(ProductRequest productRequest) {
+    public void saveProduct(ProductRequest productRequest) {
         ProductEntity productEntity = new ProductEntity();
         productEntity.setId(productRequest.getId());
         productEntity.setName(productRequest.getName());
@@ -42,5 +43,13 @@ public class ProductServiceImpl implements ProductService {
         productEntity.setOrder(orderEntity);
 
         productRepository.save(productEntity);
+    }
+
+    public void deleteProductById(int id) {
+        productRepository.deleteById(id);
+    }
+
+    public Optional<ProductResponse> getProductById(int id){
+        return productRepository.findById(id).map(entity -> new ProductResponse(entity.getId(), entity.getName(), entity.getDescription(), entity.getPrice(), entity.getOrder().getId()));
     }
 }

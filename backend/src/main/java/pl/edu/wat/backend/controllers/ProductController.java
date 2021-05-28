@@ -3,17 +3,17 @@ package pl.edu.wat.backend.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import pl.edu.wat.backend.dtos.OrderResponse;
 import pl.edu.wat.backend.dtos.ProductRequest;
 import pl.edu.wat.backend.dtos.ProductResponse;
 import pl.edu.wat.backend.services.ProductService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
+@RequestMapping("/api/product")
 public class ProductController {
 
     private final ProductService productService;
@@ -23,17 +23,33 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/api/product")
+    @GetMapping("/all")
     public ResponseEntity<List<ProductResponse>> getProducts() {
         List<ProductResponse> products = productService.getAllProducts();
-
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
-    @PostMapping("/api/product")
-    public ResponseEntity addDemo(@RequestBody ProductRequest productRequest) {
-        productService.addProduct(productRequest);
-
+    @PostMapping
+    public ResponseEntity addProduct(@RequestBody ProductRequest productRequest) {
+        productService.saveProduct(productRequest);
         return new ResponseEntity(HttpStatus.CREATED);
+    }
+
+    @DeleteMapping
+    public ResponseEntity deleteProduct(@RequestParam int id){
+        productService.deleteProductById(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity getProduct(@RequestParam int id){
+        Optional<ProductResponse> product = productService.getProductById(id);
+        return new ResponseEntity<>(product, HttpStatus.OK);
+    }
+
+    @PutMapping
+    public ResponseEntity updateProduct(@RequestBody ProductRequest productRequest) {
+        productService.saveProduct(productRequest);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

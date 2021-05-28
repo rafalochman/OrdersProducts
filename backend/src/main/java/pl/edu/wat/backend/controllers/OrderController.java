@@ -3,16 +3,15 @@ package pl.edu.wat.backend.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.edu.wat.backend.dtos.*;
 import pl.edu.wat.backend.services.OrderService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
+@RequestMapping("/api/order")
 public class OrderController {
 
     private final OrderService orderService;
@@ -22,17 +21,34 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @GetMapping("/api/order")
+    @GetMapping("/all")
     public ResponseEntity<List<OrderResponse>> getOrders() {
         List<OrderResponse> orders = orderService.getAllOrders();
-
         return new ResponseEntity<>(orders, HttpStatus.OK);
     }
 
-    @PostMapping("/api/order")
-    public ResponseEntity addDemo(@RequestBody OrderRequest orderRequest) {
-        orderService.addOrder(orderRequest);
-
+    @PostMapping
+    public ResponseEntity addOrder(@RequestBody OrderRequest orderRequest) {
+        orderService.saveOrder(orderRequest);
         return new ResponseEntity(HttpStatus.CREATED);
     }
+
+    @DeleteMapping
+    public ResponseEntity deleteOrder(@RequestParam int id){
+        orderService.deleteOrderById(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity getOrder(@RequestParam int id){
+        Optional<OrderResponse> order = orderService.getOrderById(id);
+        return new ResponseEntity<>(order, HttpStatus.OK);
+    }
+
+    @PutMapping
+    public ResponseEntity updateOrder(@RequestBody OrderRequest orderRequest) {
+        orderService.saveOrder(orderRequest);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
 }
