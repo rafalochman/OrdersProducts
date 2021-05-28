@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import pl.edu.wat.backend.dtos.*;
-import pl.edu.wat.backend.services.DemoService;
 import pl.edu.wat.backend.services.OrderService;
-import pl.edu.wat.backend.services.ProductService;
 
 import java.util.List;
 

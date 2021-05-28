@@ -7,11 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import pl.edu.wat.backend.dtos.DemoRequest;
-import pl.edu.wat.backend.dtos.DemoResponse;
 import pl.edu.wat.backend.dtos.ProductRequest;
 import pl.edu.wat.backend.dtos.ProductResponse;
-import pl.edu.wat.backend.services.DemoService;
 import pl.edu.wat.backend.services.ProductService;
 
 import java.util.List;
