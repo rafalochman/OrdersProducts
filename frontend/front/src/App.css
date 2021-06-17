@@ -21,7 +21,7 @@
   text-decoration: none;
 }
 
-.ordersTable {
+.ordersTable, .positionsTable {
   max-width: 1000px;
   background-color: white;
 }
