@@ -1,6 +1,6 @@
 import './App.css';
 import Home from "./Home";
-import OrderPositions from "./OrderPositions";
+import OrderProducts from "./OrderProducts";
 import AddPosition from "./Home";
 import EditOrder from "./Home";
 import EditPosition from "./Home";
@@ -11,7 +11,7 @@ function App() {
     <Router>
       <Switch>
         <Route path = "/" exact component={Home}/>
-        <Route path = "/orderdetails/:id" exact component={OrderPositions}/>
+        <Route path = "/orderdetails/:id" exact component={OrderProducts}/>
         <Route path = "/addposition" exact component={AddPosition}/>
         <Route path = "/editOrder/:id" exact component={EditOrder}/>
         <Route path = "/editposition/:id" exact component={EditPosition}/>

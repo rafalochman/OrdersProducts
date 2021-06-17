@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 import { Link } from 'react-router-dom';
 
 
-function OrderPositions({ match }) {
+function OrderProducts({ match }) {
   useEffect(() => {
     fetchData();
   }, []);
@@ -30,7 +30,7 @@ function OrderPositions({ match }) {
   return (
     <div className="App">
       <div className="App-header">
-        <p>Order positions</p>
+        <p>Order products</p>
 
         <Table className="ordersTable" aria-label="orders table">
           <TableHead>
@@ -71,4 +71,4 @@ function OrderPositions({ match }) {
   );
 }
 
-export default OrderPositions;
+export default OrderProducts;
