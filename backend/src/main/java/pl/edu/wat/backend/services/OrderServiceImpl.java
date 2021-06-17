@@ -1,15 +1,18 @@
 package pl.edu.wat.backend.services;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import pl.edu.wat.backend.dtos.OrderRequest;
 import pl.edu.wat.backend.dtos.OrderResponse;
+import pl.edu.wat.backend.dtos.ProductRequest;
 import pl.edu.wat.backend.dtos.ProductResponse;
 import pl.edu.wat.backend.entities.OrderEntity;
 import pl.edu.wat.backend.repositories.OrderRepository;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -47,5 +50,11 @@ public class OrderServiceImpl implements OrderService {
 
     public Optional<OrderResponse> getOrderById(int id){
         return orderRepository.findById(id).map(entity -> new OrderResponse(entity.getId(), entity.getCustomerName(), entity.getStoreName(), entity.getOrderDate()));
+    }
+
+    @EventListener(ApplicationReadyEvent.class)
+    public void fillDB(){
+        saveOrder(new OrderRequest(1,"Jan Kowalski", "Sport store", new GregorianCalendar(2021, Calendar.JULY, 17).getTime()));
+        saveOrder(new OrderRequest(2,"Kamil Nowak", "Sport store", new GregorianCalendar(2021, Calendar.JULY, 16).getTime()));
     }
 }

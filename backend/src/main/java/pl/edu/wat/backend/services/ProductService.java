@@ -14,4 +14,6 @@ public interface ProductService {
     void deleteProductById(int id);
 
     Optional<ProductResponse> getProductById(int id);
+
+    void fillDB();
 }

@@ -14,4 +14,6 @@ public interface OrderService {
     void deleteOrderById(int id);
 
     Optional<OrderResponse> getOrderById(int id);
+
+    void fillDB();
 }
