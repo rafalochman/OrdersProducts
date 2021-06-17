@@ -12,10 +12,8 @@ import pl.edu.wat.backend.entities.ProductEntity;
 import pl.edu.wat.backend.repositories.ProductRepository;
 
 import java.awt.*;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.util.*;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -34,6 +32,22 @@ public class ProductServiceImpl implements ProductService {
         return StreamSupport.stream(productRepository.findAll().spliterator(), false)
                 .map(entity -> new ProductResponse(entity.getId(), entity.getName(), entity.getDescription(), entity.getPrice(), entity.getOrder().getId()))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ProductResponse> getAllProductsByOrderId(int id) {
+        List<ProductResponse> products = StreamSupport.stream(productRepository.findAll().spliterator(), false)
+                .map(entity -> new ProductResponse(entity.getId(), entity.getName(), entity.getDescription(), entity.getPrice(), entity.getOrder().getId()))
+                .collect(Collectors.toList());
+
+        List<ProductResponse> orderProducts = new ArrayList<>();
+        for(ProductResponse product: products){
+            if(product.getOrderId() == id){
+                orderProducts.add(product);
+            }
+        }
+
+        return orderProducts;
     }
 
     @Override

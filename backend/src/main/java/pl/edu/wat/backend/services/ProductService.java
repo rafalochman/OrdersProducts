@@ -9,6 +9,8 @@ import java.util.Optional;
 public interface ProductService {
     List<ProductResponse> getAllProducts();
 
+    List<ProductResponse> getAllProductsByOrderId(int id);
+
     void saveProduct(ProductRequest productRequest);
 
     void deleteProductById(int id);

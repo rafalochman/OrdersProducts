@@ -30,6 +30,12 @@ public class ProductController {
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
+    @GetMapping("/order")
+    public ResponseEntity<List<ProductResponse>> getProductsByOrderId(@RequestParam int id) {
+        List<ProductResponse> products = productService.getAllProductsByOrderId(id);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity addProduct(@RequestBody ProductRequest productRequest) {
         productService.saveProduct(productRequest);
