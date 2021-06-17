@@ -16,3 +16,16 @@
 .App-link {
   color: #61dafb;
 }
+
+.buttonLink{
+  text-decoration: none;
+}
+
+.ordersTable {
+  max-width: 1000px;
+  background-color: white;
+}
+
+.deleteButton, .editButton {
+  margin-left: 10px;
+}

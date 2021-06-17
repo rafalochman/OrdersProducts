@@ -1,6 +1,6 @@
 import './App.css';
 import Home from "./Home";
-import Orders from "./Home";
+import Orders from "./Orders";
 import Positions from "./Home";
 import AddOrder from "./Home";
 import AddPosition from "./Home";

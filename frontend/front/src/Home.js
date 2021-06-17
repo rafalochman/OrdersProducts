@@ -6,10 +6,10 @@ function Home(){
   return (
     <div className="App">
       <div className="App-header">
-        <Link class="buttonLink addButton" to="/orders">
+        <Link className="buttonLink" to="/orders">
           <Button variant="contained" color="primary" >Orders</Button>
         </Link>
-        <Link class="buttonLink addButton" to="/positions">
+        <Link className="buttonLink" to="/positions">
           <Button variant="contained" color="primary" >Positions</Button>
         </Link>
       </div>

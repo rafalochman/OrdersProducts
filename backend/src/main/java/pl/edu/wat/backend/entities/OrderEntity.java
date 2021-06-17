@@ -19,6 +19,6 @@ public class OrderEntity {
     @JsonFormat(pattern = "dd.MM.yyyy")
     private Date orderDate;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", orphanRemoval = true)
     private List<ProductEntity> products;
 }
