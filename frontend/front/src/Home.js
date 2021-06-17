@@ -41,7 +41,7 @@ function Home() {
               <TableCell>Customer name</TableCell>
               <TableCell>Store name</TableCell>
               <TableCell>Date</TableCell>
-              <TableCell width="280px">Actions</TableCell>
+              <TableCell width="400px">Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -52,7 +52,10 @@ function Home() {
                 <TableCell>{row.storeName}</TableCell>
                 <TableCell>{row.orderDate}</TableCell>
                 <TableCell>
-                    <Link to={`/orderdetails/${row.id}`} className="buttonLink">
+                    <Link to={`/orderproducts/${row.id}`} className="buttonLink">
+                        <Button color="primary" variant="contained">Products</Button>
+                    </Link>
+                    <Link to={`/orderdetails/${row.id}`} className="buttonLink detailsButton">
                         <Button color="secondary" variant="contained">Details</Button>
                     </Link>
                     <Link to={`/orderedit/${row.id}`} className="buttonLink editButton">
@@ -70,6 +73,11 @@ function Home() {
         <p>
             <Link className="buttonLink" to="/addorder">
                 <Button variant="contained" color="primary" >Add Order</Button>
+            </Link>
+        </p>
+        <p>
+            <Link className="buttonLink" to="/products">
+                <Button variant="contained" color="primary" >All purchased products</Button>
             </Link>
         </p>
       </div>

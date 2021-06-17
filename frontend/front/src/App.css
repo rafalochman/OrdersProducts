@@ -26,6 +26,6 @@
   background-color: white;
 }
 
-.deleteButton, .editButton {
+.deleteButton, .editButton, .detailsButton {
   margin-left: 10px;
 }

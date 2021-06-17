@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 import { Link } from 'react-router-dom';
 
 
-function OrderProducts({ match }) {
+function OrderProducts() {
   useEffect(() => {
     fetchData();
   }, []);
@@ -17,7 +17,7 @@ function OrderProducts({ match }) {
   const [items, setData] = useState([]);
   
   const fetchData = async () => {
-    const fetchData = await fetch(`http://localhost:8080/api/product/order?id=${match.params.id}`);
+    const fetchData = await fetch(`http://localhost:8080/api/product/all`);
     const items = await fetchData.json();
     setData(items);
   };
@@ -30,7 +30,7 @@ function OrderProducts({ match }) {
   return (
     <div className="App">
       <div className="App-header">
-        <p>Order products</p>
+        <p>All purchased products</p>
 
         <Table className="ordersTable" aria-label="orders table">
           <TableHead>
