@@ -105,7 +105,7 @@ function OrderEdit({ match }) {
             label="Date"
             >
           </TextField>
-          <p><Button variant="contained" color="primary" onClick={editData}>Edit</Button></p>
+          <p><Button variant="contained" color="primary" onClick={editData}>Save</Button></p>
         </form>
 
         <Link className="buttonLink" to="/">

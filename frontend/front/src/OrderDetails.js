@@ -25,7 +25,7 @@ function OrderDetails({ match }) {
         <p>Store name: {item.storeName}</p>
         <p>Order date: {item.orderDate}</p>
 
-        <Link class="buttonLink" to="/">
+        <Link className="buttonLink" to="/">
           <p><Button variant="contained">Back</Button></p>
         </Link>
       </div>

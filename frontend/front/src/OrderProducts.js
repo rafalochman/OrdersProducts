@@ -30,7 +30,7 @@ function OrderProducts({ match }) {
   return (
     <div className="App">
       <div className="App-header">
-        <p>Order products</p>
+        <p><b>Order products</b></p>
 
         <Table className="ordersTable" aria-label="orders table">
           <TableHead>
@@ -66,6 +66,9 @@ function OrderProducts({ match }) {
             ))}
           </TableBody>
         </Table>
+        <Link className="buttonLink" to="/">
+          <p><Button variant="contained">Back</Button></p>
+        </Link>
       </div>
     </div>
   );
