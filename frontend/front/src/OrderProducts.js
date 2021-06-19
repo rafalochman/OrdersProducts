@@ -52,7 +52,7 @@ function OrderProducts({ match }) {
                 <TableCell>{row.description}</TableCell>
                 <TableCell>{row.price} $</TableCell>
                 <TableCell>
-                    <Link to={`/orderdetails/${row.id}`} className="buttonLink">
+                    <Link to={`/productdetails/${row.id}`} className="buttonLink">
                         <Button color="secondary" variant="contained">Details</Button>
                     </Link>
                     <Link to={`/orderedit/${row.id}`} className="buttonLink editButton">
@@ -66,6 +66,12 @@ function OrderProducts({ match }) {
             ))}
           </TableBody>
         </Table>
+        <p>
+            <Link className="buttonLink" to="/orderadd">
+                <Button variant="contained" color="primary" >Add Product</Button>
+            </Link>
+        </p>
+
         <Link className="buttonLink" to="/">
           <p><Button variant="contained">Back</Button></p>
         </Link>

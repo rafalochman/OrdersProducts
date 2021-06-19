@@ -90,7 +90,7 @@ function OrderEdit({ match }) {
             }}
             className={classes.root}
             variant="outlined"
-            label="Description"
+            label="Store name"
             >
           </TextField>
           <br></br><br></br>

@@ -52,7 +52,7 @@ function OrderAdd() {
   return (
     <div className="App">
       <div className="App-header">
-        <p><b>Edit Order</b></p>
+        <p><b>Add Order</b></p>
 
         <form>
           <TextField
@@ -75,7 +75,7 @@ function OrderAdd() {
             }}
             className={classes.root}
             variant="outlined"
-            label="Description"
+            label="Store name"
             >
           </TextField>
           <br></br><br></br>
