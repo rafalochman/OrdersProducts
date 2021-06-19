@@ -30,7 +30,7 @@ function OrderProducts() {
   return (
     <div className="App">
       <div className="App-header">
-        <p>All purchased products</p>
+        <p><b>All purchased products</b></p>
 
         <Table className="ordersTable" aria-label="orders table">
           <TableHead>
@@ -66,6 +66,10 @@ function OrderProducts() {
             ))}
           </TableBody>
         </Table>
+        
+        <Link className="buttonLink" to="/">
+          <p><Button variant="contained">Back</Button></p>
+        </Link>
       </div>
     </div>
   );

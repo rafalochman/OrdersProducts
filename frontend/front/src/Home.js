@@ -71,7 +71,7 @@ function Home() {
         </Table>
 
         <p>
-            <Link className="buttonLink" to="/addorder">
+            <Link className="buttonLink" to="/orderadd">
                 <Button variant="contained" color="primary" >Add Order</Button>
             </Link>
         </p>
