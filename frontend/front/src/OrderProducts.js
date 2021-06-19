@@ -67,7 +67,7 @@ function OrderProducts({ match }) {
           </TableBody>
         </Table>
         <p>
-            <Link className="buttonLink" to="/orderadd">
+            <Link className="buttonLink" to={`/productadd/${match.params.id}`}>
                 <Button variant="contained" color="primary" >Add Product</Button>
             </Link>
         </p>
