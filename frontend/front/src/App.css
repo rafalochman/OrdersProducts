@@ -29,3 +29,7 @@
 .deleteButton, .editButton, .detailsButton {
   margin-left: 10px;
 }
+
+TextField {
+  margin-top: 30px;
+}
