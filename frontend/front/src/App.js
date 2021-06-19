@@ -7,6 +7,7 @@ import OrderEdit from "./OrderEdit";
 import OrderAdd from "./OrderAdd";
 import ProductDetails from "./ProductDetails";
 import ProductAdd from "./ProductAdd";
+import ProductEdit from "./ProductEdit";
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path = "/orderadd" exact component={OrderAdd}/>
         <Route path = "/productdetails/:id" exact component={ProductDetails}/>
         <Route path = "/productadd/:id" exact component={ProductAdd}/>
+        <Route path = "/productedit/:id" exact component={ProductEdit}/>
       </Switch>
     </Router>
   );

@@ -55,7 +55,7 @@ function OrderProducts({ match }) {
                     <Link to={`/productdetails/${row.id}`} className="buttonLink">
                         <Button color="secondary" variant="contained">Details</Button>
                     </Link>
-                    <Link to={`/orderedit/${row.id}`} className="buttonLink editButton">
+                    <Link to={`/productedit/${row.id}`} className="buttonLink editButton">
                         <Button color="secondary" variant="contained">Edit</Button>
                     </Link>
                     <Link to="#" className="buttonLink deleteButton">
