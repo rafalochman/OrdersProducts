@@ -2,6 +2,8 @@ package pl.edu.wat.backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,6 +21,7 @@ public class OrderEntity {
     @JsonFormat(pattern = "dd.MM.yyyy")
     private Date orderDate;
 
-    @OneToMany(mappedBy = "order", orphanRemoval = true)
+    @OneToMany(mappedBy = "order")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<ProductEntity> products;
 }
