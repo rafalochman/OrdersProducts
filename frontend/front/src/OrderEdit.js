@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,6 +26,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+function timeout() {
+  return new Promise( res => setTimeout(res, 300) );
+}
+
 function OrderEdit({ match }) {
   useEffect(() => {
     fetchData();
@@ -32,6 +37,7 @@ function OrderEdit({ match }) {
 
   const [item, setData] = useState([]);
 
+  const history = useHistory();
   const fetchData = async () => {
     const fetchData = await fetch(`http://localhost:8080/api/order?id=${match.params.id}`);
     const item = await fetchData.json();
@@ -62,6 +68,8 @@ function OrderEdit({ match }) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({id: match.params.id, customerName: customerInput, storeName: storeInput, orderDate: dateInput})
     });
+    await timeout();
+    history.goBack();
   };
 
   return (

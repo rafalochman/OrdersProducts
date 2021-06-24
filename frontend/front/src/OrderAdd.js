@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,7 +26,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+function timeout() {
+  return new Promise( res => setTimeout(res, 300) );
+}
+
 function OrderAdd() {
+  const history = useHistory();
   const classes = useStyles();
   const [customerInput, setCustomer] = useState(" ");
   const [storeInput, setStore] = useState(" ");
@@ -47,6 +53,8 @@ function OrderAdd() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({customerName: customerInput, storeName: storeInput, orderDate: dateInput})
     });
+    await timeout();
+    history.goBack();
   };
 
   return (

@@ -26,6 +26,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+function timeout() {
+  return new Promise( res => setTimeout(res, 300) );
+}
+
 function ProductEdit({ match }) {
     useEffect(() => {
       fetchData();
@@ -64,6 +68,8 @@ function ProductEdit({ match }) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({id: match.params.id, name: nameInput, description: descriptionInput, price: priceInput, orderId: item.orderId})
     });
+    await timeout();
+    history.goBack();
   };
 
   return (

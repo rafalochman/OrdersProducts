@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import React, { useState} from 'react';
 import { makeStyles } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,7 +26,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+function timeout() {
+  return new Promise( res => setTimeout(res, 300) );
+}
+
 function ProductAdd({ match }) {
+  const history = useHistory();
   const classes = useStyles();
   const [nameInput, setName] = useState(" ");
   const [descriptionInput, setDescription] = useState(" ");
@@ -47,6 +53,8 @@ function ProductAdd({ match }) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({name: nameInput, description: descriptionInput, price: priceInput, orderId: match.params.id})
     });
+    await timeout();
+    history.goBack();
   };
 
   return (
