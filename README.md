@@ -1,6 +1,6 @@
-# OrdersPositions
+# OrdersProducts
 
-OrdersPositions is a simple CRUD type web app created to learn Spring and React. 
+OrdersProducts is a simple CRUD type web app created to learn Spring and React. 
 
 ## Technologies
 * Java 11
