@@ -31,7 +31,7 @@ function Home() {
     <div className="App">
       <div className="App-header">
 
-        <p>Orders - Positions App</p>
+        <p>Orders - Products App</p>
         <p><b>Orders</b></p>
 
         <Table className="ordersTable" aria-label="orders table">
